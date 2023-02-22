@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     //.fillMaxSize()
 //                    .fillMaxSize(0.1f)
                     //.fillMaxHeight(0.9f)
-                    .requiredHeight(1600.dp)
+//                    .requiredHeight(1600.dp)
                     .background(Color.Yellow),
 
                 //horizontalArrangement = Arrangement.SpaceAround,
@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
 //                    .width(300.dp)
                         .fillMaxWidth(0.5f)
 //                    .fillMaxSize(0.1f)
-                        //.fillMaxHeight(0.9f)
+                        .fillMaxHeight(0.9f)
                         //.height(1600.dp)
                         .background(Color.Green),
                     horizontalArrangement = Arrangement.SpaceAround,
@@ -54,9 +54,12 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Text(text = "One")
                     Text(text = "Two")
-                    Text(text = "Three")
+                    Text(text = "Three", modifier = Modifier
+                        .offset((-30).dp, (-30).dp)
+                        //.absoluteOffset(30.dp,30.dp)
+                    )
                 }
-                Row(
+                /*Row(
                     modifier = Modifier
 //                    .width(300.dp)
                         .fillMaxWidth()
@@ -70,7 +73,7 @@ class MainActivity : ComponentActivity() {
                     Text(text = "One")
                     Text(text = "Two")
                     Text(text = "Three")
-                }
+                }*/
             }
         }
     }
