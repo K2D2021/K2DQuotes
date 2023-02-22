@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import ru.k2d.k2dquotes.ui.theme.K2DQuotesTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,10 +31,12 @@ class MainActivity : ComponentActivity() {
             Row (
                 modifier = Modifier
 //                    .width(300.dp)
-                    .fillMaxSize()
+                    //.fillMaxSize()
 //                    .fillMaxSize(0.1f)
                     //.fillMaxHeight(0.9f)
+                    .requiredHeight(1600.dp)
                     .background(Color.Yellow),
+
                 //horizontalArrangement = Arrangement.SpaceAround,
                 //verticalAlignment = Alignment.CenterVertically
                     ){
@@ -43,7 +46,8 @@ class MainActivity : ComponentActivity() {
 //                    .width(300.dp)
                         .fillMaxWidth(0.5f)
 //                    .fillMaxSize(0.1f)
-                        .fillMaxHeight(0.9f)
+                        //.fillMaxHeight(0.9f)
+                        //.height(1600.dp)
                         .background(Color.Green),
                     horizontalArrangement = Arrangement.SpaceAround,
                     verticalAlignment = Alignment.CenterVertically
