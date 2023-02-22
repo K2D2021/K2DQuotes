@@ -5,7 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -33,7 +37,7 @@ class MainActivity : ComponentActivity() {
                 }
             }*/
             //Greeting(name = "K2D")
-            Row (
+            Row(
                 modifier = Modifier
 //                    .width(300.dp)
                     //.fillMaxSize()
@@ -44,7 +48,7 @@ class MainActivity : ComponentActivity() {
 
                 //horizontalArrangement = Arrangement.SpaceAround,
                 //verticalAlignment = Alignment.CenterVertically
-                    ){
+            ) {
 
                 Row(
                     modifier = Modifier
@@ -56,14 +60,21 @@ class MainActivity : ComponentActivity() {
                         .padding(20.dp)
                         .border(10.dp, Color.Black, RoundedCornerShape(10.dp))
                         //.height(1600.dp)
-                        .background(Color.Green),
-                    horizontalArrangement = Arrangement.SpaceAround,
+                        .background(Color.Green)
+                        .scrollable(
+                            orientation = Orientation.Vertical,
+                            state = rememberScrollState()
+
+                        ),
+
+                            horizontalArrangement = Arrangement . SpaceAround,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(text = "One")
                     Text(text = "Two")
                     Text(text = "Three", modifier = Modifier
                         .offset((-30).dp, (-30).dp)
+                        .clickable { }
                         //.absoluteOffset(30.dp,30.dp)
                     )
                 }
