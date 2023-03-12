@@ -20,8 +20,8 @@ fun HomeScreen() {
             .fillMaxSize()
     )
     {
-        Column() {
-
+        Column {
+            GreetingSection()
         }
     }
 }
@@ -49,7 +49,12 @@ fun GreetingSection(
                 style = MaterialTheme.typography.body1
             )
         }
-        Icon(painter = painterResource(id = ru.k2d.k2dquotes.R.drawable.ic_baseline_search_24), contentDescription = "")
+        Icon(
+            painter = painterResource(id = ru.k2d.k2dquotes.R.drawable.ic_baseline_search_24),
+            contentDescription = "Search",
+            tint = Color.White,
+            modifier = Modifier.size(24.dp)
+        )
     }
 
 }
