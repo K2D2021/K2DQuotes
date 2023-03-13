@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -15,10 +16,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import ru.k2d.k2dquotes.ui.theme.ButtonBlue
-import ru.k2d.k2dquotes.ui.theme.DarkerButtonBlue
-import ru.k2d.k2dquotes.ui.theme.DeepBlue
-import ru.k2d.k2dquotes.ui.theme.TextWhite
+import ru.k2d.k2dquotes.R
+import ru.k2d.k2dquotes.ui.theme.*
 
 
 @Composable
@@ -32,6 +31,7 @@ fun HomeScreen() {
         Column {
             GreetingSection()
             ChipSection(chips = listOf("Sweet sleep", "Insomnia", "Depression"))
+            CurrentMeditation()
         }
     }
 }
@@ -60,7 +60,7 @@ fun GreetingSection(
             )
         }
         Icon(
-            painter = painterResource(id = ru.k2d.k2dquotes.R.drawable.ic_baseline_search_24),
+            painter = painterResource(id = R.drawable.ic_search),
             contentDescription = "Search",
             tint = Color.White,
             modifier = Modifier.size(24.dp)
@@ -74,7 +74,7 @@ fun ChipSection(chips: List<String>) {
         mutableStateOf(0)
     }
     LazyRow {
-        items(chips.size){
+        items(chips.size) {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
@@ -87,9 +87,54 @@ fun ChipSection(chips: List<String>) {
                         if (selectedChipIndex == it) ButtonBlue else DarkerButtonBlue
                     )
                     .padding(15.dp)
-            ){
+            ) {
                 Text(text = chips[it], color = TextWhite)
             }
         }
     }
+}
+
+@Composable
+fun CurrentMeditation(
+    color: Color = LightRed
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+            .padding(15.dp)
+            .clip(RoundedCornerShape(15.dp))
+            .background(color)
+            .padding(horizontal = 15.dp, vertical = 20.dp)
+            .fillMaxWidth()
+    ) {
+        Column() {
+
+            Text(
+                text = "Daily Thought",
+                style = MaterialTheme.typography.h2
+            )
+            Text(
+                text = "Meditation • 3-10 min.",
+                style = MaterialTheme.typography.body1,
+                color = TextWhite
+            )
+        }
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
+                .background(ButtonBlue)
+                .padding(10.dp)
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_play), contentDescription = "Play",
+                tint = Color.White,
+                modifier = Modifier
+                    .size(16.dp)
+            )
+        }
+    }
+
 }
