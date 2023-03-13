@@ -4,6 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -13,10 +15,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import ru.k2d.k2dquotes.Feature
 import ru.k2d.k2dquotes.R
+import ru.k2d.k2dquotes.standardQuadFromTo
 import ru.k2d.k2dquotes.ui.theme.*
 
 
@@ -136,5 +142,56 @@ fun CurrentMeditation(
             )
         }
     }
+}
 
+@Composable
+fun FeatureSection(features: List<Feature>) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = "Features",
+            style = MaterialTheme.typography.h1,
+            modifier = Modifier.padding(15.dp)
+        )
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            contentPadding = PaddingValues(start = 7.5.dp, end = 7.5.dp, bottom = 100.dp),
+            modifier = Modifier.fillMaxHeight()
+        ) {
+            items(features.size) {
+
+            }
+        }
+    }
+}
+
+@Composable
+fun FeatureItem(
+    feature: Feature
+) {
+    BoxWithConstraints(
+        modifier = Modifier
+            .padding(7.5.dp)
+            .aspectRatio(1f)
+            .clip(RoundedCornerShape(10.dp))
+            .background(feature.darkColor)
+    ) {
+        val width = constraints.maxWidth
+        val height = constraints.maxHeight
+
+        //Medium colored path
+        val mediumColoredPoint1 = Offset(0f, height * 0.3f)
+        val mediumColoredPoint2 = Offset(width * 0.1f, height * 0.35f)
+        val mediumColoredPoint3 = Offset(width * 0.4f, height * 0.05f)
+        val mediumColoredPoint4 = Offset(width * 0.75f, height * 0.7f)
+        val mediumColoredPoint5 = Offset(width * 1.4f, -height.toFloat())
+
+
+        val mediumColoredPath = Path().apply {
+            moveTo(mediumColoredPoint1.x, mediumColoredPoint1.y)
+            standardQuadFromTo(mediumColoredPoint1, mediumColoredPoint2)
+            standardQuadFromTo(mediumColoredPoint2, mediumColoredPoint3)
+            standardQuadFromTo(mediumColoredPoint3, mediumColoredPoint4)
+            standardQuadFromTo(mediumColoredPoint4, mediumColoredPoint5)
+        }
+    }
 }
