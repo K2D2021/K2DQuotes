@@ -115,7 +115,6 @@ fun CurrentMeditation(
             .fillMaxWidth()
     ) {
         Column() {
-
             Text(
                 text = "Daily Thought",
                 style = MaterialTheme.typography.h2
