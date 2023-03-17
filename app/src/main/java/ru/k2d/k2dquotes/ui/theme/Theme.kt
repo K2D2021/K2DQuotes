@@ -1,5 +1,4 @@
 package ru.k2d.k2dquotes.ui.theme
-
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
@@ -28,7 +27,10 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun K2DQuotesTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+fun DaggerHiltCourseTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {
