@@ -27,7 +27,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun DaggerHiltCourseTheme(
+fun K2DQuotesTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
